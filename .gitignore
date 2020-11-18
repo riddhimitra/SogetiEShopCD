@@ -1,0 +1,15 @@
+/target/
+/bin/
+.classpath
+/results/
+.settings
+/cucumber-json-report.json
+/test/test.iml
+.idea/*
+*.iml
+.idea
+/.metadata/
+
+buildVersion
+test-sample/target/classes/.cucumber/cucumber.stepDefinitions.tmp
+test-sample/target/classes/.cucumber/cucumber.glue.tmp
