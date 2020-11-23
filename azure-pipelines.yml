@@ -17,7 +17,7 @@ variables:
   SELENIUM_PLATFORM_VERSION: 10
   RemoteBrowserDriverProvider: BrowserStack
   BROWSERSTACK_ACCESS_KEY: $(BS_KEY)
-  SecretBSKey: $(BSKEY)
+  SecretBSKey: $(BS_KEY)
   BROWSERSTACK_USERNAME: markjones63
 
 steps:
@@ -36,7 +36,6 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'verify'
     options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
-
   env:
     BROWSERSTACK_ACCESS_KEY: $(SecretBSKey)
 
