@@ -53,3 +53,4 @@ steps:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     testRunTitle: 'newmvn'
+- task: BrowserStackResults@0
