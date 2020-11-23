@@ -60,7 +60,7 @@ public class LocalChromeDriver extends AbstractLocalBrowserDriver
 		}
 		else
 		{
-			chromeOptions.addArguments("--start-maximized");
+			//chromeOptions.addArguments("--start-maximized");
 			//chromeOptions.addArguments("--start-fullscreen");
 		}
 		if (headless)
@@ -102,13 +102,11 @@ public class LocalChromeDriver extends AbstractLocalBrowserDriver
 	public void addCapabilities(DesiredCapabilities capabilities)
 	{
 		ChromeOptions chromeOptions = disableChromeForms();
-		
-		  if (BrowserFactory.isDimensionBrowserSupported()) 
-		  {
-		  chromeOptions.addArguments("--start-maximized");
-		  chromeOptions.addArguments("--start-fullscreen"); 
-		  }
-		 
+		if (BrowserFactory.isDimensionBrowserSupported())
+		{
+			chromeOptions.addArguments("--start-maximized");
+			chromeOptions.addArguments("--start-fullscreen");
+		}
 
 		chromeOptions.addArguments("--ignore-certificate-errors");
 		capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
