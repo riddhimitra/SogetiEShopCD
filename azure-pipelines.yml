@@ -22,6 +22,7 @@ variables:
 steps:
 - script: |
    echo $(SELENIUM_BROWSER)
+   echo KEY is $(BROWSERSTACK_ACCESS_KEY)
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -32,4 +33,4 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'verify'
-    options: '-DENV=@test -Dcucumber.options="--tags @tmp"'
+    options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
