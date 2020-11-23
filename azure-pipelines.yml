@@ -23,21 +23,27 @@ steps:
 - script: |
    echo $(SELENIUM_BROWSER)
    echo KEY is $(BROWSERSTACK_ACCESS_KEY)
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'verify'
-    options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
+
+#- task: Maven@3
+#  inputs:
+#    mavenPomFile: 'pom.xml'
+#    mavenOptions: '-Xmx3072m'
+#    javaHomeOption: 'JDKVersion'
+#    jdkVersionOption: '1.8'
+#    jdkArchitectureOption: 'x64'
+#    publishJUnitResults: true
+#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#    goals: 'verify'
+#    options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
 - task: Bash@3
   inputs:
       targetType: 'inline'
       script: |
-        export BROWSERSTACK_ACCESS_KEY="$BROWSERSTACK_ACCESS_KEY)"
-        
+        export BROWSERSTACK_ACCESS_KEY="$BROWSERSTACK_ACCESS_KEY)"      
         mvn -X -DENV=@test -Dcucumber.options="--tags @tmp" verify
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    testRunTitle: 'newmvn''
