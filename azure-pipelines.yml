@@ -8,8 +8,23 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  
+variables:
+  SELENIUM_BROWSER: Chrome
+  SELENIUM_DEVICE: Chrome
+  SELENIUM_DEVICE_VERSION: latest
+  SELENIUM_PLATFORM: Windows
+  SELENIUM_PLATFORM_VERSION: 10
+  RemoteBrowserDriverProvider: BrowserStack
+  BROWSERSTACK_ACCESS_KEY: $(BS_KEY)
+  SecretBSKey: $(BS_KEY)
+  BROWSERSTACK_USERNAME: markjones63
 
 steps:
+- script: |
+   echo $(SELENIUM_BROWSER)
+   echo KEY is $(BROWSERSTACK_ACCESS_KEY)
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -20,4 +35,21 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'verify'
-    options: '-DENV=@test -Dcucumber.options="--tags @tmp"'
+    options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
+  env:
+    BROWSERSTACK_ACCESS_KEY: $(SecretBSKey)
+
+- task: Bash@3
+  inputs:
+      targetType: 'inline'
+      script: |
+        export BROWSERSTACK_ACCESS_KEY="$BROWSERSTACK_ACCESS_KEY"    
+        mvn -X -DENV=@test -Dcucumber.options="--tags @tmp" verify
+  env:
+    BROWSERSTACK_ACCESS_KEY: $(SecretBSKey)
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    testRunTitle: 'newmvn'

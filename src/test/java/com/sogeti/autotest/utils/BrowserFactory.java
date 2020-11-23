@@ -127,6 +127,9 @@ public class BrowserFactory
 		{
 			AbstractRemoteBrowserDriver remoteBrowserDriver;
 			String remoteBrowserDriverProvider = System.getenv(REMOTE_BROWSER_DRIVER_PROVIDER);
+			if (remoteBrowserDriverProvider == null) {
+				remoteBrowserDriverProvider = Config.getCommonOptionalPropValue(REMOTE_BROWSER_DRIVER_PROVIDER);
+			}
 			if (remoteBrowserDriverProvider != null && remoteBrowserDriverProvider.equalsIgnoreCase(BROWSER_STACK))
 			{
 				remoteBrowserDriver = new BrowserStackRemoteDriver();
