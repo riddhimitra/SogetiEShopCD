@@ -8,6 +8,16 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  
+variables:
+  SELENIUM_BROWSER: Chrome
+  SELENIUM_DEVICE: Chrome
+  SELENIUM_DEVICE_VERSION: latest
+  SELENIUM_PLATFORM: Windows
+  SELENIUM_PLATFORM_VERSION: 10
+  RemoteBrowserDriverProvider: BrowserStack
+  BROWSERSTACK_ACCESS_KEY: nLmUEHprzmQzUxStufrm
+  BROWSERSTACK_USERNAME: markjones63
 
 steps:
 - task: Maven@3
