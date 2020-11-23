@@ -1,6 +1,5 @@
 package com.sogeti.autotest.core;
 
-
 import org.junit.runner.RunWith;
 
 import io.cucumber.junit.Cucumber;
