@@ -34,3 +34,10 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'verify'
     options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
+- task: Bash@3
+  inputs:
+      targetType: 'inline'
+      script: |
+        export BROWSERSTACK_ACCESS_KEY="$BROWSERSTACK_ACCESS_KEY)"
+        
+        mvn -X -DENV=@test -Dcucumber.options="--tags @tmp" verify
