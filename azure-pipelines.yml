@@ -52,7 +52,7 @@ steps:
 
 - task: PublishCucumberReport@1
   inputs:
-    jsonDir: '$(System.DefaultWorkingDirectory)'
-    outputPath: '$(System.DefaultWorkingDirectory)'
+    jsonDir: '$(System.DefaultWorkingDirectory)/target'
+    outputPath: '$(System.DefaultWorkingDirectory)/target/cucumber-html-report'
     theme: 'bootstrap'
     reportSuiteAsScenarios: true
