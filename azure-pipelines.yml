@@ -49,3 +49,10 @@ steps:
 #    testResultsFiles: '**/surefire-reports/TEST-*.xml'
 #    testRunTitle: 'newmvn'
 - task: BrowserStackResults@0
+
+- task: PublishCucumberReport@1
+  inputs:
+    jsonDir: '$(System.DefaultWorkingDirectory)'
+    outputPath: '$(System.DefaultWorkingDirectory)'
+    theme: 'bootstrap'
+    reportSuiteAsScenarios: true
