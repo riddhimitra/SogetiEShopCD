@@ -16,14 +16,11 @@ variables:
   SELENIUM_PLATFORM: Windows
   SELENIUM_PLATFORM_VERSION: 10
   RemoteBrowserDriverProvider: BrowserStack
-  BROWSERSTACK_ACCESS_KEY: $(BS_KEY)
-  SecretBSKey: $(BS_KEY)
-  BROWSERSTACK_USERNAME: markjones63
 
 steps:
-- script: |
-   echo $(SELENIUM_BROWSER)
-   echo KEY is $(BROWSERSTACK_ACCESS_KEY)
+- task: BrowserStackConfig@0
+  inputs:
+    BrowserStackServiceEndPoint: 'BrowserStack'
 
 - task: Maven@3
   inputs:
@@ -36,21 +33,19 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'verify'
     options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
-  env:
-    BROWSERSTACK_ACCESS_KEY: $(SecretBSKey)
 
-- task: Bash@3
-  inputs:
-      targetType: 'inline'
-      script: |
-        export BROWSERSTACK_ACCESS_KEY="$BROWSERSTACK_ACCESS_KEY"    
-        mvn -X -DENV=@test -Dcucumber.options="--tags @tmp" verify
-  env:
-    BROWSERSTACK_ACCESS_KEY: $(SecretBSKey)
+#- task: Bash@3
+#  inputs:
+#      targetType: 'inline'
+#      script: |
+#        export BROWSERSTACK_ACCESS_KEY="$BROWSERSTACK_ACCESS_KEY"    
+#        mvn -X -DENV=@test -Dcucumber.options="--tags @tmp" verify
+#  env:
+#    BROWSERSTACK_ACCESS_KEY: $(SecretBSKey)
 
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    testRunTitle: 'newmvn'
+#- task: PublishTestResults@2
+#  inputs:
+#    testResultsFormat: 'JUnit'
+#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#    testRunTitle: 'newmvn'
 - task: BrowserStackResults@0
