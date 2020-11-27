@@ -11,7 +11,12 @@ public class CartContainer {
 	protected static String containingClass(String className) {
 		return "contains(concat(' ',normalize-space(@class),' '),' " + className + " ')";
 	}
+	@FindBy(how = How.NAME, using = "updatebutton")
+	public WebElement updateButton;
 
+	@FindBy(how = How.CSS, using = "section.col-xs-4 a.esh-basket-checkout")
+	public WebElement checkOutButton;
+	
 	@FindBy(how = How.CSS, using = "[name='quantity']")
 	public static WebElement quantity;
 
