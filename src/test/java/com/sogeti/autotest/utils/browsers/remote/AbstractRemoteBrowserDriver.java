@@ -30,7 +30,7 @@ public abstract class AbstractRemoteBrowserDriver
 
 	private static final String SELENIUM_DEVICE_ORIENTATION = "SELENIUM_DEVICE_ORIENTATION";
 
-	private static final String SELENIUM_PLATFORM_VERSION = "SELENIUM_PLATFORM_VERSION";
+	private static final String SELENIUM_VERSION = "SELENIUM_VERSION";
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractRemoteBrowserDriver.class.getName());
 
@@ -78,7 +78,7 @@ public abstract class AbstractRemoteBrowserDriver
 
 		LOGGER.info("Browser: {}", System.getenv(SELENIUM_BROWSER));
 		LOGGER.info("Platform: {}", System.getenv(SELENIUM_PLATFORM));
-		LOGGER.info("Version: {}", System.getenv(SELENIUM_PLATFORM_VERSION));
+		LOGGER.info("Version: {}", System.getenv(SELENIUM_VERSION));
 		LOGGER.info("Device: {}", System.getenv(SELENIUM_DEVICE));
 
 		RemoteWebDriver driver = null;

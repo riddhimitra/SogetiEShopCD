@@ -20,7 +20,6 @@ public class Build
 		private int duration;
 		private String status;
 		private String hashed_id;
-		private String build_tag;
 
 		public String getName()
 		{
@@ -60,14 +59,6 @@ public class Build
 		public void setHashed_id(String hashed_id)
 		{
 			this.hashed_id = hashed_id;
-		}
-
-		public String getBuild_tag() {
-			return build_tag;
-		}
-
-		public void setBuild_tag(String build_tag) {
-			this.build_tag = build_tag;
 		}
 	}
 }

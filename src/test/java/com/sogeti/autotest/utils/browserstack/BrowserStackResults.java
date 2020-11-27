@@ -5,7 +5,6 @@ import static io.restassured.RestAssured.given;
 import java.util.List;
 import java.util.Optional;
 
-import com.sogeti.autotest.utils.Config;
 import com.sogeti.autotest.utils.browserstack.Build.AutomationBuild;
 import com.sogeti.autotest.utils.browserstack.Session.AutomationSession;
 
@@ -37,9 +36,6 @@ public class BrowserStackResults
 	private String getBuildId()
 	{
 		String remoteBrowserDriverProvider = System.getenv(REMOTE_BROWSER_DRIVER_PROVIDER);
-		if (remoteBrowserDriverProvider == null) {
-			remoteBrowserDriverProvider = Config.getCommonOptionalPropValue(REMOTE_BROWSER_DRIVER_PROVIDER);
-		}
 		if (remoteBrowserDriverProvider == null || !remoteBrowserDriverProvider.equalsIgnoreCase(BROWSER_STACK))
 		{
 			return null;

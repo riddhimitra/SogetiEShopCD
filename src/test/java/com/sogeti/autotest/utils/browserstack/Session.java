@@ -36,9 +36,6 @@ public class Session
 		private String selenium_logs_url;
 		private String status;
 		private String video_url;
-		private String created_at;
-		private String browserstack_status;
-		private String test_priority;
 
 		public String getAppium_logs_url()
 		{
@@ -238,30 +235,6 @@ public class Session
 		public void setVideo_url(String video_url)
 		{
 			this.video_url = video_url;
-		}
-
-		public String getCreated_at() {
-			return created_at;
-		}
-
-		public void setCreated_at(String created_at) {
-			this.created_at = created_at;
-		}
-
-		public String getBrowserstack_status() {
-			return browserstack_status;
-		}
-
-		public void setBrowserstack_status(String browserstack_status) {
-			this.browserstack_status = browserstack_status;
-		}
-
-		public String getTest_priority() {
-			return test_priority;
-		}
-
-		public void setTest_priority(String test_priority) {
-			this.test_priority = test_priority;
 		}
 	}
 }

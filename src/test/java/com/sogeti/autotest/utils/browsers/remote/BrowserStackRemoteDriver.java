@@ -19,7 +19,7 @@ public class BrowserStackRemoteDriver extends AbstractRemoteBrowserDriver
 	protected String createRemoteDriver(DesiredCapabilities capabilities)
 	{
 		// use browserstack not a local GRID
-		logger.info("using browserstack as local hubURL is empty");
+		logger.info("using browserstack as hubURL is empty");
 
 		capabilities.setCapability("browserstack.local", System.getenv("BROWSERSTACK_LOCAL"));
 		capabilities.setCapability("browserstack.localIdentifier", System.getenv("BROWSERSTACK_LOCAL_IDENTIFIER"));
@@ -59,7 +59,7 @@ public class BrowserStackRemoteDriver extends AbstractRemoteBrowserDriver
 			capabilities.setCapability("browser_version", browserVersion);
 		}
 		capabilities.setCapability("os", System.getenv(SELENIUM_PLATFORM));
-		capabilities.setCapability("os_version", System.getenv("SELENIUM_PLATFORM_VERSION"));
+		capabilities.setCapability("os_version", System.getenv("SELENIUM_VERSION"));
 		setDimensionCapabilities(capabilities);
 		setPerformanceLogs(capabilities);
 

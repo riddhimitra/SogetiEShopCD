@@ -8,12 +8,14 @@ import com.sogeti.autotest.handlers.ActionHandler;
 import com.sogeti.autotest.helper.Helper;
 import com.sogeti.autotest.utils.Utils;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
 
 
 public class BaseSteps extends Helper{
 	public static final Utils utils = new Utils();
+	public static BrowserDriver browserdriver = new BrowserDriver();
 
 	public void openShoppingCart(){
 		ActionHandler.scrollElementIntoView(header.shoppingBagLink);
@@ -26,5 +28,10 @@ public class BaseSteps extends Helper{
 		setDefaultBrowserType();
 		Navigation.given_user_navigate_to(environment, page, BrowserDriver.BROWSER_TYPE);
 	}
+	
+	
+
+
+	 
 
 }
