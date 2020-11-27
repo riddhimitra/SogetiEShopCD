@@ -1,4 +1,4 @@
-package com.sogeti.autotest.pangaea2.containers;
+package com.sogeti.autotest.page.containers;
 
 import java.util.List;
 
@@ -303,8 +303,8 @@ public class MyAccountContainer {
 	@FindBy(how = How.CSS, using = ".text-center.js-delete-store-action")
 	public List<WebElement> removeConfirmButtonList;
 
-	//Appointments
-	//On MyAccount PAge
+	// Appointments
+	// On MyAccount PAge
 
 	@FindBy(how = How.CSS, using = ".appointment .sub-title")
 	public WebElement myAppointmentsHeader;
@@ -380,7 +380,7 @@ public class MyAccountContainer {
 
 	@FindBy(how = How.CSS, using = "[data-test='booked-appointment-date']")
 	public WebElement BookedAppointmentDate;
-	
+
 	@FindBy(how = How.CSS, using = "[data-test='booked-appointment-confirmation-no']")
 	public WebElement BookedAppointmentConfirmationNo;
 

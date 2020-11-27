@@ -29,7 +29,7 @@ public class BrowserDriver
 	private static WebDriver mDriver;
 	private static WebDriver aDriver;
 	private static WebDriver sDriver;
-	public static int WAIT_IN_SEC = 5;
+	public static int WAIT_IN_SEC = 10;
 	private static WebDriverWait wait = null;
 	public static BROWSER_TYPES BROWSER_TYPE;
 
@@ -207,7 +207,7 @@ public class BrowserDriver
 					if (mDriver != null)
 					{
 						LOGGER.info("quitting browser ONE");
-						mDriver.quit();
+						//mDriver.quit();
 					}
 					mDriver = null;
 					break;
@@ -290,6 +290,7 @@ public class BrowserDriver
 		LOGGER.info("Directing browser to:" + url);
 
 	}
+	
 
 	public static void loadrelativePage(final String path, final BROWSER_TYPES driverType)
 	{

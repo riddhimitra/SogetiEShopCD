@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sogeti.autotest.utils.BrowserDriver;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -225,5 +227,7 @@ public class AssertHandler extends BaseHandler
 		assertTrue(value + " is NOT the selected option. "+selectedVal + " is", found);
 
 	}
+	
+
 
 }

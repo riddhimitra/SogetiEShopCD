@@ -1,4 +1,4 @@
-package com.sogeti.autotest.pangaea2.containers;
+package com.sogeti.autotest.page.containers;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,14 +44,7 @@ public class Footer {
 	@FindBy(how = How.CSS, using = "button.btn-join-sogeti")
 	public WebElement subscribeButton;
 
-
 	@FindBy(how = How.CSS, using = "div.join-button p.text-success")
 	public WebElement subscribeSuccessMessage;
-
-
-
-
-
-
 
 }
