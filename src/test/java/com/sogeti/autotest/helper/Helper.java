@@ -87,9 +87,7 @@ public class Helper
 	
 	  public static String getCurrentUrl() 
 	  {
-	
 		return driverW.getCurrentUrl();
-		
 		}
 
 }
