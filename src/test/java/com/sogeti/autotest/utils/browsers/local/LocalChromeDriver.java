@@ -60,7 +60,7 @@ public class LocalChromeDriver extends AbstractLocalBrowserDriver
 		}
 		else
 		{
-			//chromeOptions.addArguments("--start-maximized");
+			chromeOptions.addArguments("--start-maximized");
 			//chromeOptions.addArguments("--start-fullscreen");
 		}
 		if (headless)
