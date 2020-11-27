@@ -25,9 +25,9 @@ public class OrderConfirmSteps extends Helper {
 	
 	@And("I click the checkout button")
 	public void i_click_the_checkout_button() {
-		 ActionHandler.scrollElementIntoView(homeContainer.checkOutButton);
+		 ActionHandler.scrollElementIntoView(cartContainer.checkOutButton);
 		 BrowserDriver.wait(500);
-		 ActionHandler.click(homeContainer.checkOutButton);
+		 ActionHandler.click(cartContainer.checkOutButton);
 	}
 	
 	 @When("^I click the paynow button$") 

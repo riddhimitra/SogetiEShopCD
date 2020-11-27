@@ -15,12 +15,6 @@ public class HomePageContainer {
 	@FindBy(how = How.XPATH, using = "/html/body/div/div/div[2]/div[2]/form/input[1]")
 	public WebElement addToBasKetButtonFreeReport;
 
-	@FindBy(how = How.NAME, using = "updatebutton")
-	public WebElement updateButton;
-
-	@FindBy(how = How.CSS, using = "section.col-xs-4 a.esh-basket-checkout")
-	public WebElement checkOutButton;
-
 	@FindBy(how = How.XPATH, using = "/html/body/div/header/div/article/section[1]/a/img")
 	public WebElement eshopLogo;
 
