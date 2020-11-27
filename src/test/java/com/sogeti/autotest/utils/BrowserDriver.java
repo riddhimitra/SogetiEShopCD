@@ -207,7 +207,7 @@ public class BrowserDriver
 					if (mDriver != null)
 					{
 						LOGGER.info("quitting browser ONE");
-						//mDriver.quit();
+						mDriver.quit();
 					}
 					mDriver = null;
 					break;

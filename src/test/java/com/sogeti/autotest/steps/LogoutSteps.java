@@ -1,8 +1,6 @@
 package com.sogeti.autotest.steps;
 
-import java.io.IOException;
 import com.sogeti.autotest.utils.BrowserDriver;
-import com.sogeti.autotest.utils.Navigation;
 import com.sogeti.autotest.handlers.ActionHandler;
 import com.sogeti.autotest.handlers.AssertHandler;
 import com.sogeti.autotest.handlers.VerifyHandler;
