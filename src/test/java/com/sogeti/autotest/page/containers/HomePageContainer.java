@@ -13,7 +13,7 @@ public class HomePageContainer {
 	public WebElement addToBasKetButtonWhitemug;
 
 	@FindBy(how = How.XPATH, using = "/html/body/div/div/div[2]/div[2]/form/input[1]")
-	public WebElement addToBasKetButtonFreeReport;
+	public WebElement addToBasKetButtonWorldQualityReport;
 
 	@FindBy(how = How.XPATH, using = "/html/body/div/header/div/article/section[1]/a/img")
 	public WebElement eshopLogo;

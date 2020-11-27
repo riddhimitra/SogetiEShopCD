@@ -23,6 +23,13 @@ public class OrderConfirmSteps extends Helper {
 		return customerEmailText;
 	}
 	
+	@And("I click the update button")
+	public void i_click_the_update_button() {
+		 ActionHandler.scrollElementIntoView(cartContainer.updateButton);
+		 BrowserDriver.wait(500);
+		 ActionHandler.click(cartContainer.updateButton);
+	}
+	
 	@And("I click the checkout button")
 	public void i_click_the_checkout_button() {
 		 ActionHandler.scrollElementIntoView(cartContainer.checkOutButton);

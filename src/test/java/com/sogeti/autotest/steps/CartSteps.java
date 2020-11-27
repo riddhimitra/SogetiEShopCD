@@ -1,6 +1,8 @@
 package com.sogeti.autotest.steps;
 
 import java.io.IOException;
+
+import org.openqa.selenium.Keys;
 import com.sogeti.autotest.handlers.ActionHandler;
 import com.sogeti.autotest.handlers.AssertHandler;
 import com.sogeti.autotest.helper.Helper;
@@ -21,16 +23,24 @@ public class CartSteps extends Helper
 		  
 	  }
 	 	
+	 @When("^I add report in the cart$") 
+	 public void i_add_report_in_the_cart() 
+	  { 
+		  ActionHandler.click(homeContainer.addToBasKetButtonWorldQualityReport);
+		  
+	  }
 	
 	@Then("^I select qty as two in the cart$")
 	public void i_select_qty_as_two_in_the_cart() throws Throwable
 	{
-		BrowserDriver.waitForElement(cartContainer.IncreaseQty);
-		ActionHandler.scrollElementIntoView(cartContainer.IncreaseQty);
-		ActionHandler.click(cartContainer.IncreaseQty);
-		ActionHandler.waitForJSandJQueryToLoad(BrowserDriver.BROWSER_TYPE);
-		BrowserDriver.wait(500);
-		ActionHandler.isElementNotPresent(cartContainer.IncreaseQty, BrowserDriver.BROWSER_TYPE);
+		BrowserDriver.waitForElement(cartContainer.basketQty);
+		ActionHandler.scrollElementIntoView(cartContainer.basketQty);
+		ActionHandler.click(cartContainer.basketQty);
+		cartContainer.basketQty.sendKeys(Keys.ARROW_UP);
+		cartContainer.basketQty.sendKeys(Keys.RETURN);
+		//ActionHandler.waitForJSandJQueryToLoad(BrowserDriver.BROWSER_TYPE);
+		//BrowserDriver.wait(500);
+		//ActionHandler.isElementNotPresent(cartContainer.IncreaseQty, BrowserDriver.BROWSER_TYPE);
 	}
 
 	@Then("^I am unable to increase qty again$")
