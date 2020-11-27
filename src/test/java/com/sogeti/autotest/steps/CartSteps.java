@@ -1,19 +1,27 @@
 package com.sogeti.autotest.steps;
 
 import java.io.IOException;
-
 import com.sogeti.autotest.handlers.ActionHandler;
 import com.sogeti.autotest.handlers.AssertHandler;
 import com.sogeti.autotest.helper.Helper;
 import com.sogeti.autotest.utils.BrowserDriver;
 import com.sogeti.autotest.utils.CacheService;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class CartSteps extends Helper
 {
+	
+
+	 @When("^I add Capgemini whitemug in the cart$") 
+	 public void i_add_white_mug_in_the_cart() 
+	  { 
+		  ActionHandler.click(homeContainer.addToBasKetButtonWhitemug);
+		  
+	  }
+	 	
+	
 	@Then("^I select qty as two in the cart$")
 	public void i_select_qty_as_two_in_the_cart() throws Throwable
 	{

@@ -201,35 +201,20 @@ public class BrowserFactory
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
 		String browserDimensions = BrowserFactory.getBrowserDimensions();
-		if (StringUtils.isBlank(browserDimensions))
-		{
-			try
-			{
-				logger.info("setting window full screen");
-				driver.manage().window().fullscreen();
-			}
-			catch (WebDriverException e)
-			{
-				logger.info("couldn't full screen trying to maximise:" + e);
-				try
-				{
-					driver.manage().window().maximize();
-				}
-				catch (Exception e1)
-				{
-					// TODO Auto-generated catch block
-					logger.info("couldn't maximise trying resize:" + e);
-					try {
-						Thread.sleep(10000);
-						driver.manage().window().setPosition(new Point(0, 0));
-						driver.manage().window().setSize(new Dimension(1920,1200));
-						}
-						catch(Exception ee) {
-							logger.info("couldn't manually resize:" + e);
-						}
-				}
-			}
-		}
+		/*
+		 * if (StringUtils.isBlank(browserDimensions)) { try {
+		 * logger.info("setting window fullscreen");
+		 * driver.manage().window().fullscreen();
+		 * 
+		 * 
+		 * } catch (WebDriverException e) {
+		 * logger.info("couldn't full screen trying to make full screen:" + e); try {
+		 * driver.manage().window().maximize(); } catch (Exception e1) { // TODO
+		 * Auto-generated catch block logger.info("couldn't maximise trying resize:" +
+		 * e); try { Thread.sleep(10000); driver.manage().window().setPosition(new
+		 * Point(0, 0)); driver.manage().window().setSize(new Dimension(1920,1200)); }
+		 * catch(Exception ee) { logger.info("couldn't manually resize:" + e); } } } }
+		 */
 		
 		if (seleniumProxy != null && bmProxy != null)
 		{

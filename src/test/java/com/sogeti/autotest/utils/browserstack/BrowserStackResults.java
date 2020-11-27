@@ -5,9 +5,9 @@ import static io.restassured.RestAssured.given;
 import java.util.List;
 import java.util.Optional;
 
-import com.sogeti.autotest.utils.Config;
 import com.sogeti.autotest.utils.browserstack.Build.AutomationBuild;
 import com.sogeti.autotest.utils.browserstack.Session.AutomationSession;
+import com.sogeti.autotest.utils.Config;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;

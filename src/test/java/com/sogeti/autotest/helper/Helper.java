@@ -8,13 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.sogeti.autotest.handlers.ActionHandler;
-import com.sogeti.autotest.pangaea2.containers.CartContainer;
-import com.sogeti.autotest.pangaea2.containers.Footer;
-import com.sogeti.autotest.pangaea2.containers.Header;
-import com.sogeti.autotest.pangaea2.containers.HomePageContainer;
-import com.sogeti.autotest.pangaea2.containers.LoginPageContainer;
-import com.sogeti.autotest.pangaea2.containers.MyAccountContainer;
-import com.sogeti.autotest.pangaea2.containers.OrderConfirmationContainer;
+import com.sogeti.autotest.page.containers.CartContainer;
+import com.sogeti.autotest.page.containers.Footer;
+import com.sogeti.autotest.page.containers.Header;
+import com.sogeti.autotest.page.containers.HomePageContainer;
+import com.sogeti.autotest.page.containers.LoginPageContainer;
+import com.sogeti.autotest.page.containers.MyAccountContainer;
+import com.sogeti.autotest.page.containers.OrderConfirmationContainer;
 import com.sogeti.autotest.utils.BrowserDriver;
 import com.sogeti.autotest.utils.BrowserFactory.BROWSER_TYPES;
 import com.sogeti.autotest.utils.Navigation;
@@ -22,10 +22,11 @@ import com.sogeti.autotest.utils.Navigation;
 
 public class Helper
 {
-	static WebDriver driverW;
+	public static WebDriver driverW;
 	public static HomePageContainer homeContainer = new HomePageContainer();
 	public static LoginPageContainer loginContainer = new LoginPageContainer();
 	public static MyAccountContainer myAccountContainer = new MyAccountContainer();
+	//public static EshopHomePage eshopHomePage = new EshopHomePage();
 	public static CartContainer cartContainer = new CartContainer();
 	public static OrderConfirmationContainer orderConfirmationContainer = new OrderConfirmationContainer();
 	public static Header header = new Header();
@@ -56,6 +57,10 @@ public class Helper
 				.initElements(driverW, Header.class);
 		footer = PageFactory
 				.initElements(driverW, Footer.class);
+		//eshopHomePage = PageFactory
+		//		.initElements(driverW, EshopHomePage.class);
+				
+		
 
 	}
 
@@ -79,5 +84,12 @@ public class Helper
 		setDefaultBrowserType();
 		Navigation.given_I_navigate_to(region, "home page");
 	}
+	
+	  public static String getCurrentUrl() 
+	  {
+	
+		return driverW.getCurrentUrl();
+		
+		}
 
 }
