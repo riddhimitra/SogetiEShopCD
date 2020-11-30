@@ -39,8 +39,8 @@ public class CartSteps extends Helper
 		cartContainer.basketQty.sendKeys(Keys.ARROW_UP);
 		cartContainer.basketQty.sendKeys(Keys.RETURN);
 		//ActionHandler.waitForJSandJQueryToLoad(BrowserDriver.BROWSER_TYPE);
-		//BrowserDriver.wait(500);
-		//ActionHandler.isElementNotPresent(cartContainer.IncreaseQty, BrowserDriver.BROWSER_TYPE);
+		BrowserDriver.wait(500);
+		ActionHandler.isElementNotPresent(cartContainer.basketQty, BrowserDriver.BROWSER_TYPE);
 	}
 
 	@Then("^I am unable to increase qty again$")
