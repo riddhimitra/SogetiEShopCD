@@ -44,7 +44,7 @@ public class LoginSteps extends Helper{
 	{
 	     VerifyHandler.verifyElementPresent(loginContainer.loginText);
 	     VerifyHandler.verifyElementPresent(loginContainer.inputUsername);
-	     BrowserDriver.wait(500);
+	     BrowserDriver.wait(300);
 	     ActionHandler.setText(loginContainer.inputUsername, username, true);
 	     ActionHandler.setText(loginContainer.inputPassword, password, true);
 		 ActionHandler.click(loginContainer.loginButton);
