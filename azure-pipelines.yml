@@ -10,49 +10,60 @@ pool:
   vmImage: 'ubuntu-latest'
   
 variables:
-  SELENIUM_BROWSER: Chrome
-  SELENIUM_DEVICE: Chrome
   SELENIUM_DEVICE_VERSION: latest
   SELENIUM_PLATFORM: Windows
   SELENIUM_PLATFORM_VERSION: 10
   RemoteBrowserDriverProvider: BrowserStack
 
-steps:
-- task: BrowserStackConfig@0
-  inputs:
-    BrowserStackServiceEndPoint: 'BrowserStack'
+jobs:
+- job: ChromeTests
+  variables:
+    SELENIUM_BROWSER: Chrome
+    SELENIUM_DEVICE: Chrome
+  steps:
+    - task: BrowserStackConfig@0
+      inputs:
+        BrowserStackServiceEndPoint: 'BrowserStack'
 
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'verify'
-    options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        goals: 'verify'
+        options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
+        testRunTitle: 'Chrome Selenium Smoke Tests'
 
-#- task: Bash@3
-#  inputs:
-#      targetType: 'inline'
-#      script: |
-#        export BROWSERSTACK_ACCESS_KEY="$BROWSERSTACK_ACCESS_KEY"    
-#        mvn -X -DENV=@test -Dcucumber.options="--tags @tmp" verify
-#  env:
-#    BROWSERSTACK_ACCESS_KEY: $(SecretBSKey)
+- job: EdgeTests
+  variables:
+    SELENIUM_BROWSER: Edge
+    SELENIUM_DEVICE: Edge
+  steps:
+    - task: BrowserStackConfig@0
+      inputs:
+        BrowserStackServiceEndPoint: 'BrowserStack'
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        goals: 'verify'
+        options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
+        testRunTitle: 'Edge Selenium Smoke Tests'
 
-#- task: PublishTestResults@2
-#  inputs:
-#    testResultsFormat: 'JUnit'
-#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-#    testRunTitle: 'newmvn'
-- task: BrowserStackResults@0
-
-- task: PublishCucumberReport@1
-  inputs:
-    jsonDir: '$(System.DefaultWorkingDirectory)/target'
-    outputPath: '$(System.DefaultWorkingDirectory)/target/cucumber-html-report'
-    theme: 'bootstrap'
-    reportSuiteAsScenarios: true
+- job: Results
+  steps:
+    - task: PublishCucumberReport@1
+      inputs:
+          jsonDir: '$(System.DefaultWorkingDirectory)/target'
+          outputPath: '$(System.DefaultWorkingDirectory)/target/cucumber-html-report'
+          theme: 'bootstrap'
+          reportSuiteAsScenarios: true
