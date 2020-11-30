@@ -37,11 +37,22 @@ jobs:
         goals: 'verify'
         options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
         testRunTitle: 'Chrome Selenium Smoke Tests'
-
-- job: EdgeTests
+    - task: PublishCucumberReport@1
+      inputs:
+          jsonDir: '$(System.DefaultWorkingDirectory)/target'
+          outputPath: '$(System.DefaultWorkingDirectory)/target/cucumber-html-report'
+          theme: 'bootstrap'
+          reportSuiteAsScenarios: true
+          name: 'Chrome Tests'
+          title: 'Chrome Tests'
+          
+- job: SafariTests
   variables:
-    SELENIUM_BROWSER: Edge
-    SELENIUM_DEVICE: Edge
+    SELENIUM_BROWSER: Safari
+    SELENIUM_DEVICE: Safari
+    SELENIUM_DEVICE_VERSION: 13.1
+    SELENIUM_PLATFORM: OS X
+    SELENIUM_PLATFORM_VERSION: Catalina
   steps:
     - task: BrowserStackConfig@0
       inputs:
@@ -58,12 +69,11 @@ jobs:
         goals: 'verify'
         options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
         testRunTitle: 'Edge Selenium Smoke Tests'
-
-- job: Results
-  steps:
     - task: PublishCucumberReport@1
       inputs:
           jsonDir: '$(System.DefaultWorkingDirectory)/target'
           outputPath: '$(System.DefaultWorkingDirectory)/target/cucumber-html-report'
           theme: 'bootstrap'
           reportSuiteAsScenarios: true
+          name: 'Safari Tests'
+          title: 'Safari Tests'
