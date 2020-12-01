@@ -42,8 +42,9 @@ public class LoginPageContainer {
 	@FindBy(how = How.CSS, using = "div.form-group button.btn.btn-default")
 	public WebElement loginButton;
 
-	@FindBy(how = How.CSS, using = "section.esh-identity-drop img")
+	@FindBy(how = How.CSS, using = "#logoutForm")
 	public WebElement accountArea;
+	
 
 	@FindBy(how = How.CSS, using = "section.esh-identity-drop img.esh-identity-image")
 	public WebElement logoutDropdownLink;
