@@ -1,7 +1,7 @@
 @tmp
 Feature: Buy items from Eshop
 
-  Scenario: Adding an Item to Basket
+  Scenario: Buy a whitemug and logout
     Given I navigate to 'UK' homepage
     When I add Capgemini whitemug in the cart
     And I click the checkout button
