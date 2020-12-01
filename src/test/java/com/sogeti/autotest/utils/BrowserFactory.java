@@ -127,7 +127,7 @@ public class BrowserFactory
 		{
 			AbstractRemoteBrowserDriver remoteBrowserDriver;
 			String remoteBrowserDriverProvider = System.getenv(REMOTE_BROWSER_DRIVER_PROVIDER);
-			logger.debug("remote Driver Provider from env is "+remoteBrowserDriverProvider);
+			logger.info("remote Driver Provider from env is {}",remoteBrowserDriverProvider);
 			if (remoteBrowserDriverProvider == null) {
 				remoteBrowserDriverProvider = Config.getCommonOptionalPropValue(REMOTE_BROWSER_DRIVER_PROVIDER);
 			}
