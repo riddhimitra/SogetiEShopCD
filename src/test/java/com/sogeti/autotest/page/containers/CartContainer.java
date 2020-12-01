@@ -11,7 +11,7 @@ public class CartContainer {
 	protected static String containingClass(String className) {
 		return "contains(concat(' ',normalize-space(@class),' '),' " + className + " ')";
 	}
-	@FindBy(how = How.CSS, using = "input.esh-basket-input")
+	@FindBy(how = How.CSS, using = "section.col-xs-2 input.esh-basket-input")
 	public WebElement basketQty;
 	
 	@FindBy(how = How.NAME, using = "updatebutton")

@@ -20,8 +20,8 @@ public class LogoutSteps extends Helper{
 
 	@When("I click logout link from dropdown")
 	public void i_click_logout_link_from_dropdown() {
-		 VerifyHandler.verifyElementPresent(loginContainer.accountArea);
 		 ActionHandler.scrollElementIntoView(loginContainer.accountArea);
+		 VerifyHandler.verifyElementPresent(loginContainer.accountArea);
 		 ActionHandler.scrollElementIntoView(loginContainer.logoutDropdownLink);
 		 ActionHandler.click(loginContainer.logoutDropdownLink);
 	}
