@@ -13,14 +13,13 @@ variables:
   SELENIUM_DEVICE_VERSION: latest
   SELENIUM_PLATFORM: Windows
   SELENIUM_PLATFORM_VERSION: 10
-  RemoteBrowserDriverProvider: BrowserStack
+  REMOTE_BROWSER_DRIVER_PROVIDER: BrowserStack
 
 jobs:
 - job: ChromeTests
   variables:
     SELENIUM_BROWSER: Chrome
     SELENIUM_DEVICE: Chrome
-    RemoteBrowserDriverProvider: BrowserStack
   steps:
     - task: BrowserStackConfig@0
       inputs:
@@ -54,7 +53,6 @@ jobs:
     SELENIUM_DEVICE_VERSION: 13.1
     SELENIUM_PLATFORM: OS X
     SELENIUM_PLATFORM_VERSION: Catalina
-    RemoteBrowserDriverProvider: BrowserStack
   steps:
     - task: BrowserStackConfig@0
       inputs:

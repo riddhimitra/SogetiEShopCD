@@ -37,7 +37,7 @@ public class BrowserFactory
 	private static final Logger logger = LoggerFactory.getLogger(BrowserFactory.class.getName());
 
 	private static final String BROWSER_STACK = "BrowserStack";
-	private static final String REMOTE_BROWSER_DRIVER_PROVIDER = "RemoteBrowserDriverProvider";
+	private static final String REMOTE_BROWSER_DRIVER_PROVIDER = "REMOTE_BROWSER_DRIVER_PROVIDER";
 	private static final String SELENIUM_MODE = "SELENIUM_MODE";
 
 	public enum BROWSER_TYPES

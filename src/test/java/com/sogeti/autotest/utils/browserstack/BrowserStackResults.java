@@ -15,7 +15,7 @@ import io.restassured.path.json.JsonPath;
 
 public class BrowserStackResults
 {
-	private static final String REMOTE_BROWSER_DRIVER_PROVIDER = "RemoteBrowserDriverProvider";
+	private static final String REMOTE_BROWSER_DRIVER_PROVIDER = "REMOTE_BROWSER_DRIVER_PROVIDER";
 	private static final String BROWSER_STACK = "BrowserStack";
 
 	public Optional<String> getLatestSessionResults()
