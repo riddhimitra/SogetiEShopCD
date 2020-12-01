@@ -37,14 +37,14 @@ jobs:
         goals: 'verify'
         options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
         testRunTitle: 'Chrome Selenium Smoke Tests'
-    - task: PublishCucumberReport@1
+    - task: CmdLine@2
       inputs:
-          jsonDir: '$(System.DefaultWorkingDirectory)/target'
-          outputPath: '$(System.DefaultWorkingDirectory)/target/cucumber-html-report'
-          theme: 'bootstrap'
-          reportSuiteAsScenarios: true
-          name: 'Chrome Tests'
-          title: 'Chrome Tests'
+        script: 'mv target/cucumber-json-report.json cucumber-json-report-chrome.json'
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(System.DefaultWorkingDirectory)/cucumber-json-report-chrome.json'
+        artifact: 'cucumber-chrome'
+        publishLocation: 'pipeline'
           
 - job: SafariTests
   variables:
@@ -69,11 +69,33 @@ jobs:
         goals: 'verify'
         options: '-X -DENV=@test -Dcucumber.options="--tags @tmp"'
         testRunTitle: 'Edge Selenium Smoke Tests'
-    - task: PublishCucumberReport@1
+    - task: CmdLine@2
       inputs:
-          jsonDir: '$(System.DefaultWorkingDirectory)/target'
-          outputPath: '$(System.DefaultWorkingDirectory)/target/cucumber-html-report'
-          theme: 'bootstrap'
-          reportSuiteAsScenarios: true
-          name: 'Safari Tests'
-          title: 'Safari Tests'
+        script: 'mv target/cucumber-json-report.json cucumber-json-report-safari.json'
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(System.DefaultWorkingDirectory)/cucumber-json-report-safari.json'
+        artifact: 'cucumber-safari'
+        publishLocation: 'pipeline'
+
+- job: Report
+  dependsOn: [ChromeTests,SafariTests]
+  steps:
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      buildType: 'current'
+      artifactName: 'cucumber-chrome'
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      buildType: 'current'
+      artifactName: 'cucumber-safari'
+
+
+  - task: PublishCucumberReport@1
+    inputs:
+        jsonDir: '$(Pipeline.Workspace)'
+        outputPath: '$(System.DefaultWorkingDirectory)'
+        theme: 'bootstrap'
+        reportSuiteAsScenarios: true
+        name: 'Smoke Tests'
+        title: 'Smoke Tests'
